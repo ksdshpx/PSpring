@@ -1,7 +1,16 @@
 package cn.ksdshpx.spring.domain;
 
 public class Person {
-	private String name;
+	private String name;//成员变量
+
+	public Person() {
+		super();
+	}
+
+	public Person(String name) {
+		super();
+		this.name = name;
+	}
 
 	public String getName() {
 		return name;
