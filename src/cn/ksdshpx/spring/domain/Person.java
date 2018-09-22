@@ -17,7 +17,7 @@ public class Person {
 	}
 
 	// 自定义方法
-	public void sayHell() {
+	public void sayHelle() {
 		System.out.println("Hello," + name);
 	}
 }

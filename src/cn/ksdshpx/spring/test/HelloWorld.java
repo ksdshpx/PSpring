@@ -12,6 +12,6 @@ public class HelloWorld {
 		// 2.创建Person对象
 		Person person = (Person) applicationContext.getBean("person");
 		// 3.调用sayHello
-		person.sayHell();
+		person.sayHelle();
 	}
 }
