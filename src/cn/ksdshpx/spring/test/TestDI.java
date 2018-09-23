@@ -21,4 +21,13 @@ public class TestDI {
 		Car car = applicationContext.getBean("car", Car.class);
 		System.out.println(car);
 	}
+
+	@Test
+	public void testConstructor() {
+		// 1.创建IOC容器对象
+		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+		// 2.获取Car对象
+		Car car = applicationContext.getBean("car2", Car.class);
+		System.out.println(car);
+	}
 }

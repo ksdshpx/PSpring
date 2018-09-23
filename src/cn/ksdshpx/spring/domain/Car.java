@@ -9,6 +9,17 @@ public class Car {
 	private String crop;// 厂商
 	private Double price;// 价格
 
+	public Car() {
+		super();
+	}
+
+	public Car(String brand, String crop, Double price) {
+		super();
+		this.brand = brand;
+		this.crop = crop;
+		this.price = price;
+	}
+
 	public String getBrand() {
 		return brand;
 	}
