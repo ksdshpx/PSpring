@@ -2,19 +2,17 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-	<!-- 
-		 配置bean 
-		 配置方式：基于xml的方式,使用全类名的方式.
-		 <bean>:受Spring管理的一个javaBean对象.
-		 	id:<bean>的唯一标识.在整个的IOC容器中唯一不重复.
-		 	class:指定javaBean的全类名.目的是通过反射创建对象.
-		 		  Class clazz = Class.forName("cn.ksdshpx.spring.domain.Person");
-		 		  Object obj = clazz.newInstance();//必须提供无参数的构造器
-		 <property>:给对象的属性赋值
-		 	name:指定属性名,指定setter风格的属性名
-		 	value:指定属性值
-	-->
+	<!-- 配置bean 配置方式：基于xml的方式,使用全类名的方式. <bean>:受Spring管理的一个javaBean对象. id:<bean>的唯一标识.在整个的IOC容器中唯一不重复. 
+		class:指定javaBean的全类名.目的是通过反射创建对象. Class clazz = Class.forName("cn.ksdshpx.spring.domain.Person"); 
+		Object obj = clazz.newInstance();//必须提供无参数的构造器 <property>:给对象的属性赋值 name:指定属性名,指定setter风格的属性名 
+		value:指定属性值 -->
 	<bean id="person" class="cn.ksdshpx.spring.domain.Person">
 		<property name="name" value="Spring"></property>
+	</bean>
+
+	<bean id="car" class="cn.ksdshpx.spring.domain.Car">
+		<property name="brand" value="奥迪"></property>
+		<property name="crop" value="一汽"></property>
+		<property name="price" value="400000"></property>
 	</bean>
 </beans>
