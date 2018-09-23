@@ -10,7 +10,8 @@ public class HelloWorld {
 		// 1.创建Spring的IOC容器
 		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
 		// 2.创建Person对象
-		Person person = (Person) applicationContext.getBean("person");
+		// Person person = (Person) applicationContext.getBean("person");
+		Person person = applicationContext.getBean("person", Person.class);
 		// 3.调用sayHello
 		person.sayHelle();
 	}
