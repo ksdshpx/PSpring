@@ -28,12 +28,12 @@ public class Car {
 		this.speed = speed;
 	}
 
-
 	public String getBrand() {
 		return brand;
 	}
 
 	public void setBrand(String brand) {
+		System.out.println("brand:" + brand);
 		this.brand = brand;
 	}
 
@@ -42,6 +42,7 @@ public class Car {
 	}
 
 	public void setCrop(String crop) {
+		System.out.println("crop:" + crop);
 		this.crop = crop;
 	}
 
@@ -50,6 +51,7 @@ public class Car {
 	}
 
 	public void setPrice(Double price) {
+		System.out.println("price:" + price);
 		this.price = price;
 	}
 
@@ -58,6 +60,7 @@ public class Car {
 	}
 
 	public void setSpeed(Integer speed) {
+		System.out.println("speed:" + speed);
 		this.speed = speed;
 	}
 

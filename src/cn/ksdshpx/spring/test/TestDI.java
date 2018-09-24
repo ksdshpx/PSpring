@@ -47,4 +47,13 @@ public class TestDI {
 			System.out.println();
 		}
 	}
+
+	@Test
+	public void testP() {
+		// 1.创建IOC容器对象
+		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+		// 2.获取Car对象
+		Car car = applicationContext.getBean("car4", Car.class);
+		System.out.println(car);
+	}
 }
