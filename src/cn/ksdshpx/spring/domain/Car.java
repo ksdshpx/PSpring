@@ -12,6 +12,7 @@ public class Car {
 
 	public Car() {
 		super();
+		System.out.println("Car's Constructor!");
 	}
 
 	public Car(String brand, String crop, Double price) {
