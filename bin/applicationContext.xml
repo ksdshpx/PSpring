@@ -25,7 +25,7 @@
 		<constructor-arg value="500000"
 			type="java.lang.Double"></constructor-arg>
 	</bean>
-	<!--<bean id="car2" class="cn.ksdshpx.spring.domain.Car"> <constructor-arg 
+	<!-- <bean id="car2" class="cn.ksdshpx.spring.domain.Car"> <constructor-arg 
 		value="宝马" index="0"></constructor-arg> <constructor-arg value="500000" index="2"></constructor-arg> 
 		<constructor-arg value="华晨" index="1"></constructor-arg> </bean> -->
 
@@ -60,5 +60,20 @@
 		<property name="id" value="101"></property>
 		<property name="name" value="张三"></property>
 		<property name="car" ref="car"></property>
+	</bean>
+
+	<!-- 内部bean -->
+	<bean id="student2" class="cn.ksdshpx.spring.domain.Student">
+		<property name="id" value="101"></property>
+		<property name="name" value="张三"></property>
+		<property name="car">
+			<!-- 内部bean，只在内部使用，无需id属性 -->
+			<bean class="cn.ksdshpx.spring.domain.Car">
+				<property name="brand" value="别克"></property>
+				<property name="crop" value="上汽通用"></property>
+				<property name="price" value="260000"></property>
+				<property name="speed" value="120"></property>
+			</bean>
+		</property>
 	</bean>
 </beans>

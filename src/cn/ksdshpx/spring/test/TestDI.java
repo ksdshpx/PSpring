@@ -69,13 +69,22 @@ public class TestDI {
 		book = applicationContext.getBean("book2", Book.class);
 		System.out.println(book);
 	}
-	
+
 	@Test
-	public void testRef() {
+	public void testRefBean() {
 		// 1.创建IOC容器对象
 		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-		// 2.获取Book对象
+		// 2.获取Student对象
 		Student student = applicationContext.getBean("student", Student.class);
+		System.out.println(student);
+	}
+
+	@Test
+	public void testInnerBean() {
+		// 1.创建IOC容器对象
+		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+		// 2.获取Student对象
+		Student student = applicationContext.getBean("student2", Student.class);
 		System.out.println(student);
 	}
 }
