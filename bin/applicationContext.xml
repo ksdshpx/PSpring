@@ -78,4 +78,11 @@
 			</bean>
 		</property>
 	</bean>
+	
+    <!-- null值 -->
+	<bean id="student3" class="cn.ksdshpx.spring.domain.Student">
+		<property name="id" value="101"></property>
+		<property name="name" value="张三"></property>
+		<property name="car"><null/></property>
+	</bean>
 </beans>
