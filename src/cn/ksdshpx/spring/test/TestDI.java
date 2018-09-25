@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import cn.ksdshpx.spring.domain.Book;
 import cn.ksdshpx.spring.domain.Car;
 
 /**
@@ -55,5 +56,16 @@ public class TestDI {
 		// 2.获取Car对象
 		Car car = applicationContext.getBean("car4", Car.class);
 		System.out.println(car);
+	}
+
+	@Test
+	public void testZML() {
+		// 1.创建IOC容器对象
+		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+		// 2.获取Book对象
+		Book book = applicationContext.getBean("book", Book.class);
+		System.out.println(book);
+		book = applicationContext.getBean("book2", Book.class);
+		System.out.println(book);
 	}
 }
