@@ -60,6 +60,8 @@
 		<property name="id" value="101"></property>
 		<property name="name" value="张三"></property>
 		<property name="car" ref="car"></property>
+		<!-- 给级联属性赋值 -->
+		<property name="car.speed" value="150"></property>
 	</bean>
 
 	<!-- 内部bean -->
