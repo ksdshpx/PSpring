@@ -8,6 +8,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import cn.ksdshpx.spring.domain.Book;
 import cn.ksdshpx.spring.domain.Car;
+import cn.ksdshpx.spring.domain.Student;
 
 /**
  * 测试依赖注入
@@ -67,5 +68,14 @@ public class TestDI {
 		System.out.println(book);
 		book = applicationContext.getBean("book2", Book.class);
 		System.out.println(book);
+	}
+	
+	@Test
+	public void testRef() {
+		// 1.创建IOC容器对象
+		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+		// 2.获取Book对象
+		Student student = applicationContext.getBean("student", Student.class);
+		System.out.println(student);
 	}
 }

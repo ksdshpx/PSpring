@@ -39,24 +39,26 @@
 	<bean id="car4" class="cn.ksdshpx.spring.domain.Car" p:brand="福特"
 		p:crop="长安" p:price="300000" p:speed="260">
 	</bean>
-	
-	<!-- 
-		字面量 
-			特殊字符处理方式
-				1.字符实体
-				2.CDATA节:<![CDATA[]]>
-	-->
+
+	<!-- 字面量 特殊字符处理方式 1.字符实体 2.CDATA节:<![CDATA[]]> -->
 	<bean id="book" class="cn.ksdshpx.spring.domain.Book">
 		<property name="bookId">
 			<value>1001</value>
 		</property>
 		<property name="bookName" value="&lt;&lt;Java编程思想&gt;&gt;"></property>
 	</bean>
-	
+
 	<bean id="book2" class="cn.ksdshpx.spring.domain.Book">
 		<property name="bookId" value="1002"></property>
 		<property name="bookName">
 			<value><![CDATA[<<Oracle从入门到精通>>]]></value>
 		</property>
+	</bean>
+
+	<!-- 引用其他的bean -->
+	<bean id="student" class="cn.ksdshpx.spring.domain.Student">
+		<property name="id" value="101"></property>
+		<property name="name" value="张三"></property>
+		<property name="car" ref="car"></property>
 	</bean>
 </beans>
