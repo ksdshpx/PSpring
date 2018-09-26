@@ -123,10 +123,23 @@
 		</property>
 	</bean>
 	
+	<!-- 配置Properties -->
+	<bean id="dataSource" class="cn.ksdshpx.spring.domain.DataSource">
+		<property name="props">
+			<props>
+				<prop key="driverClass">com.mysql.jdbc.Driver</prop>
+				<prop key="jdbcUrl">jjdbc:mysql://localhost:3306/mydb1</prop>
+				<prop key="username">sswe</prop>
+				<prop key="password">oracle</prop>
+			</props>
+		</property>
+	</bean>
+	
 	<!-- 集合Bean -->
 	<util:list id="listBean">
 		<ref bean="car"/>
 		<ref bean="car2"/>
 		<ref bean="car3"/>
 	</util:list>
+	
 </beans>

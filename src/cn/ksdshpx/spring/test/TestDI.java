@@ -8,6 +8,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import cn.ksdshpx.spring.domain.Book;
 import cn.ksdshpx.spring.domain.Car;
+import cn.ksdshpx.spring.domain.DataSource;
 import cn.ksdshpx.spring.domain.PersonList;
 import cn.ksdshpx.spring.domain.PersonMap;
 import cn.ksdshpx.spring.domain.Student;
@@ -116,4 +117,14 @@ public class TestDI {
 		PersonMap personMap = applicationContext.getBean("personMap", PersonMap.class);
 		System.out.println(personMap);
 	}
+
+	@Test
+	public void testProperties() {
+		// 1.创建IOC容器对象
+		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+		// 2.获取PersonMap对象
+		DataSource dataSource = applicationContext.getBean("dataSource", DataSource.class);
+		System.out.println(dataSource);
+	}
+
 }
