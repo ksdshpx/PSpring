@@ -8,6 +8,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import cn.ksdshpx.spring.domain.Book;
 import cn.ksdshpx.spring.domain.Car;
+import cn.ksdshpx.spring.domain.PersonList;
 import cn.ksdshpx.spring.domain.Student;
 
 /**
@@ -95,5 +96,14 @@ public class TestDI {
 		// 2.获取Student对象
 		Student student = applicationContext.getBean("student3", Student.class);
 		System.out.println(student);
+	}
+
+	@Test
+	public void testList() {
+		// 1.创建IOC容器对象
+		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+		// 2.获取Student对象
+		PersonList personList = applicationContext.getBean("personList", PersonList.class);
+		System.out.println(personList);
 	}
 }
