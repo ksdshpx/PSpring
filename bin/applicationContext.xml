@@ -34,9 +34,13 @@
 		<constructor-arg value="500000"
 			type="java.lang.Double"></constructor-arg>
 	</bean>
-	<!-- <bean id="car2" class="cn.ksdshpx.spring.domain.Car"> <constructor-arg 
-		value="宝马" index="0"></constructor-arg> <constructor-arg value="500000" index="2"></constructor-arg> 
-		<constructor-arg value="华晨" index="1"></constructor-arg> </bean> -->
+	<!-- 
+		 <bean id="car2" class="cn.ksdshpx.spring.domain.Car"> 
+			<constructor-arg value="宝马" index="0">
+			</constructor-arg> <constructor-arg value="500000" index="2"></constructor-arg> 
+		    <constructor-arg value="华晨" index="1"></constructor-arg> 
+		 </bean> 
+	-->
 
 	<bean id="car3" class="cn.ksdshpx.spring.domain.Car">
 		<constructor-arg value="奔驰"></constructor-arg>
