@@ -146,4 +146,20 @@
 	<bean id="car6" class="cn.ksdshpx.spring.domain.CarFactoryBean">
 	</bean> 
 	
+	<!-- 
+		配置bean的继承关系 
+		注意：1、abstract为true的是抽象bean，不能创建实例对象
+		      2、id  abstract autowire等属性不能被继承
+	-->
+	<bean id="abstractAddress" abstract="true">
+		<property name="city" value="BeiJing"></property>
+	</bean>
+	
+	<bean id="address1" class="cn.ksdshpx.spring.domain.Address" parent="abstractAddress">
+		<property name="street" value="ChangAnJie"></property>
+	</bean>
+	
+	<bean id="address2" class="cn.ksdshpx.spring.domain.Address" parent="abstractAddress">
+		<property name="street" value="WuDaoKou"></property>
+	</bean>
 </beans>
