@@ -19,4 +19,11 @@ public class TestRelation {
 		Address address2 = ctx.getBean("address2", Address.class);
 		System.out.println(address2);
 	}
+
+	@Test
+	public void testDepends() {
+		ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+		Address address = ctx.getBean("address3", Address.class);
+		System.out.println(address);
+	}
 }

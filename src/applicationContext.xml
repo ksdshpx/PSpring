@@ -162,4 +162,8 @@
 	<bean id="address2" class="cn.ksdshpx.spring.domain.Address" parent="abstractAddress">
 		<property name="street" value="WuDaoKou"></property>
 	</bean>
+	
+	<!-- 配置bean的依赖关系 -->
+	<bean id="address3" parent="address2" depends-on="address1">
+	</bean>
 </beans>
