@@ -142,4 +142,8 @@
 		<ref bean="car3"/>
 	</util:list>
 	
+	<!-- 通过FactoryBean创建bean对象 -->
+	<bean id="car6" class="cn.ksdshpx.spring.domain.CarFactoryBean">
+	</bean> 
+	
 </beans>
