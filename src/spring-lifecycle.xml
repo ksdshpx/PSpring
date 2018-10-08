@@ -8,4 +8,7 @@
 		<property name="brand" value="吉普"></property>
 		<property name="price" value="200000"></property>
 	</bean>
+	
+	<!-- 配置bean后置处理器:Spring能自动识别是后置处理器 -->
+	<bean class="cn.ksdshpx.spring.domain.MyBeanPostProcessor"></bean>
 </beans>
