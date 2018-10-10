@@ -18,9 +18,10 @@ public class TestAnnotation {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-annotation.xml");
 		UserController userController = ctx.getBean("userController", UserController.class);
 		System.out.println("UserController:" + userController);
-		UserService userService = ctx.getBean("userServiceImpl", UserService.class);
+		/*UserService userService = ctx.getBean("userServiceImpl", UserService.class);
 		System.out.println("UserService:" + userService);
 		UserDao userDao = ctx.getBean("userDaoJdbcImpl", UserDao.class);
-		System.out.println("UserDao:" + userDao);
+		System.out.println("UserDao:" + userDao);*/
+		userController.register();
 	}
 }

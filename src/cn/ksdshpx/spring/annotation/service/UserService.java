@@ -4,5 +4,5 @@ package cn.ksdshpx.spring.annotation.service;
  * @date 2018年10月10日 上午10:51:29
  */
 public interface UserService {
-
+	public abstract void handleAdd();
 }

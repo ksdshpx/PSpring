@@ -1,6 +1,9 @@
 package cn.ksdshpx.spring.annotation.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+
+import cn.ksdshpx.spring.annotation.service.UserService;
 
 /**
  * @author peng.x
@@ -15,5 +18,9 @@ import org.springframework.stereotype.Controller;
  */
 @Controller
 public class UserController {
-
+	@Autowired
+	private UserService userService;
+	public void register() {
+		userService.handleAdd();
+	}
 }
