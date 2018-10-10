@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- Car -->
+	<bean id="car1" class="cn.ksdshpx.spring.autowire.Car">
+		<property name="brand" value="奥迪"></property>
+		<property name="price" value="350000"></property>
+	</bean>
+	<!-- Address -->
+	<bean id="address" class="cn.ksdshpx.spring.autowire.Address">
+		<property name="province" value="江苏省"></property>
+		<property name="city" value="苏州市"></property>
+	</bean>
+	<!-- 
+		Person:演示自动装配==>注意自动装配只能是引用类型的成员
+			byName:使用bean的属性名与IOC容器中<bean>的id值进行匹配.匹配成功就装配成功了
+			byType:使用bean的属性的类型与IOC容器中<bean>的class进行匹配.如果唯一匹配则成功，如果匹配到多个类型的bean则抛出异常
+	-->
+	<bean id="person" class="cn.ksdshpx.spring.autowire.Person" autowire="byName">
+		<property name="name" value="张三"></property>
+	</bean>
+</beans>
