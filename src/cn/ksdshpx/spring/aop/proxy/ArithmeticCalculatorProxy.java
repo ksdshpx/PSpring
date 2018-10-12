@@ -4,6 +4,7 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.util.Arrays;
+import java.util.Properties;
 
 /**
  * @author peng.x
@@ -31,6 +32,9 @@ public class ArithmeticCalculatorProxy {
 	}
 
 	public static void main(String[] args) {
+		//将动态生成的代理类保存下来
+		Properties properties = System.getProperties();
+		properties.put("sun.misc.ProxyGenerator.saveGeneratedFiles", "true");
 		ArithmeticCalculator target = new ArithmeticCalculatorImpl();
 		ArithmeticCalculatorProxy acp = new ArithmeticCalculatorProxy(target);
 		ArithmeticCalculator proxy = (ArithmeticCalculator) acp.getProxy();
