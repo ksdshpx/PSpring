@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
@@ -34,8 +35,19 @@ public class LoggingAspect {
 	public void afterMethod(JoinPoint joinPoint) {
 		// 得到方法名
 		String methodName = joinPoint.getSignature().getName();
-		// 得到参数
-		Object[] args = joinPoint.getArgs();
-		System.out.println("LoggingAspectJ ==> The method " + methodName + " end with " + Arrays.asList(args));
+		System.out.println("LoggingAspectJ ==> The method " + methodName + " ends");
+	}
+
+	/**
+	 * 返回通知：在目标方法正常结束后执行
+	 * 
+	 * @param joinPoint
+	 */
+	@AfterReturning(value = "execution(* cn.ksdshpx.spring.aspectj.annotation.*.*(..))", returning = "result")
+	public void afterReturnningMethod(JoinPoint joinPoint, Object result) {
+		// 得到方法名
+		String methodName = joinPoint.getSignature().getName();
+		System.out.println("LoggingAspectJ ==> The method " + methodName + " end with " + result);
+
 	}
 }
