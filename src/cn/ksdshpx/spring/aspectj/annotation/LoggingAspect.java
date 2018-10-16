@@ -5,6 +5,7 @@ import java.util.Arrays;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
@@ -40,7 +41,7 @@ public class LoggingAspect {
 
 	/**
 	 * 返回通知：在目标方法正常结束后执行
-	 * 
+	 * 获取方法的返回值：通过returning来指定一个名字，必须要与方法的形参名一致
 	 * @param joinPoint
 	 */
 	@AfterReturning(value = "execution(* cn.ksdshpx.spring.aspectj.annotation.*.*(..))", returning = "result")
@@ -48,6 +49,18 @@ public class LoggingAspect {
 		// 得到方法名
 		String methodName = joinPoint.getSignature().getName();
 		System.out.println("LoggingAspectJ ==> The method " + methodName + " end with " + result);
-
+	}
+	
+	/**
+	 * 异常通知：在目标方法抛出异常后执行
+	 * 获取方法的异常：通过throwing来指定一个名字，必须要与方法的形参名一致
+	 * 可以通过形参中异常的类型来设置抛出指定异常才会执行异常通知==>ArithmeticException
+	 * @param joinPoint
+	 */
+	@AfterThrowing(value = "execution(* cn.ksdshpx.spring.aspectj.annotation.*.*(..))",throwing="ex")
+	public void afterThrowingMethod(JoinPoint joinPoint,Exception ex) {
+		// 得到方法名
+				String methodName = joinPoint.getSignature().getName();
+				System.out.println("LoggingAspectJ ==> The method " + methodName + " occurs Exception " + ex);
 	}
 }
