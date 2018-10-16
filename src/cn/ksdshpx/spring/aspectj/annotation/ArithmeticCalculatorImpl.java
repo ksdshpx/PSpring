@@ -29,9 +29,7 @@ public class ArithmeticCalculatorImpl implements ArithmeticCalculator {
 
 	@Override
 	public int div(int i, int j) {
-		System.out.println("日志记录：The method div begin with [" + i + "," + j + "]");
 		int result = i / j;
-		System.out.println("日志记录：The method div ends with :" + result);
 		return result;
 	}
 
