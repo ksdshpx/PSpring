@@ -14,7 +14,7 @@ public class Main {
 		System.out.println(ac.getClass().getName());//com.sun.proxy.$Proxy7
 		int result = ac.add(1, 5);
 		System.out.println("Main Result:" + result);
-		result = ac.div(5, 0);
-		System.out.println("Main Result:" + result);
+//		result = ac.div(5, 0);
+//		System.out.println("Main Result:" + result);
 	}
 }

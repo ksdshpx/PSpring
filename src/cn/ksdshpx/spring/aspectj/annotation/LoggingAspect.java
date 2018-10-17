@@ -10,6 +10,7 @@ import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 /**
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Aspect
+@Order(2)
 public class LoggingAspect {
 	/**
 	 * 前置通知:在目标方法执行前执行，不管目标方法是否抛出异常都会执行

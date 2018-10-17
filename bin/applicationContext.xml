@@ -170,4 +170,23 @@
 	<!-- 配置bean的依赖关系 -->
 	<bean id="address3" parent="address2" depends-on="address1">
 	</bean>
+	
+	<!-- 
+		bean的作用域：
+			singleton:单例的(也是默认的),在整个IOC容器中只能存在一个bean的实例,而且在IOC容器对象被创建时就创建单例的bean的对象，后续
+					  每次通过getBean()方法返回的bean对象都是同一个对象
+		    prototype:原型的(即多例的),在整个IOC容器中可以有多个bean的实例。在IOC容器对象被创建时，不会创建原型的bean对象，而是每次等到
+		    		  通过getBean()方法获取bean对象时，才会创建一个新的bean对象返回
+		    request:每次Http请求都创建一个新的bean对象
+		    session:同一个HttpSession(会话)共享一个bean
+	 -->
+	 <bean id="bike" class="cn.ksdshpx.spring.domain.Bike" scope="singleton">
+	 	<property name="brand" value="捷安特"></property>
+	 	<property name="price" value="10000"></property>
+	 </bean>
+	 
+	 <bean id="bike2" class="cn.ksdshpx.spring.domain.Bike" scope="prototype">
+	 	<property name="brand" value="闪电"></property>
+	 	<property name="price" value="20000"></property>
+	 </bean>
 </beans>
