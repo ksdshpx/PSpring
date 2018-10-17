@@ -10,6 +10,7 @@ import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
@@ -21,6 +22,11 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Order(2)
 public class LoggingAspect {
+	/**
+	 * 声明切入点表达式
+	 */
+	@Pointcut("execution(* cn.ksdshpx.spring.aspectj.annotation.*.*(..))")
+	public void declarePointCut() {}
 	/**
 	 * 前置通知:在目标方法执行前执行，不管目标方法是否抛出异常都会执行
 	 */
@@ -36,7 +42,8 @@ public class LoggingAspect {
 	/**
 	 * 后置通知：在目标方法执行后执行，不管目标方法是否抛出异常都会执行，但是无法得到目标方法返回的结果
 	 */
-	@After("execution(* cn.ksdshpx.spring.aspectj.annotation.*.*(..))")
+	//@After("execution(* cn.ksdshpx.spring.aspectj.annotation.*.*(..))")
+	@After("declarePointCut()")
 	public void afterMethod(JoinPoint joinPoint) {
 		// 得到方法名
 		String methodName = joinPoint.getSignature().getName();
@@ -49,7 +56,8 @@ public class LoggingAspect {
 	 * 
 	 * @param joinPoint
 	 */
-	@AfterReturning(value = "execution(* cn.ksdshpx.spring.aspectj.annotation.*.*(..))", returning = "result")
+	//@AfterReturning(value = "execution(* cn.ksdshpx.spring.aspectj.annotation.*.*(..))", returning = "result")
+	@AfterReturning(value = "declarePointCut()", returning = "result")
 	public void afterReturnningMethod(JoinPoint joinPoint, Object result) {
 		// 得到方法名
 		String methodName = joinPoint.getSignature().getName();

@@ -16,7 +16,8 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Order(1)
 public class ValidationAspect {
-	@Before("execution(* cn.ksdshpx.spring.aspectj.annotation.*.*(..))")
+	//@Before("execution(* cn.ksdshpx.spring.aspectj.annotation.*.*(..))")
+	@Before("cn.ksdshpx.spring.aspectj.annotation.LoggingAspect.declarePointCut()")
 	public void beforeMethod(JoinPoint joinPoint) {
 		String methodName = joinPoint.getSignature().getName();
 		Object[] args = joinPoint.getArgs();
