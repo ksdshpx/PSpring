@@ -1,5 +1,8 @@
 package cn.ksdshpx.spring.jdbctemplate;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -24,5 +27,15 @@ public class TestJdbcTemplate {
 		String sql = "INSERT INTO t_user(username,password,age,gender) VALUES(?,?,?,?)";
 		Object[] params = { "zhangSan", "123456", 25, "male" };
 		jdbcTemplate.update(sql, params);
+	}
+
+	@Test
+	public void testBatchUpdate() {
+		String sql = "INSERT INTO t_user(username,password,age,gender) VALUES(?,?,?,?)";
+		List<Object[]> paramsList = new ArrayList<>();
+		paramsList.add(new Object[] { "liSi", "345346", 35, "female" });
+		paramsList.add(new Object[] { "wangWu", "tre45", 18, "male" });
+		paramsList.add(new Object[] { "zhaoLiu", "53teert", 88, "female" });
+		jdbcTemplate.batchUpdate(sql, paramsList);
 	}
 }
