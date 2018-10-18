@@ -15,6 +15,7 @@ import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 
+import cn.ksdshpx.spring.annotation.dao.UserDao;
 import cn.ksdshpx.spring.domain.User;
 
 /**
@@ -24,12 +25,14 @@ import cn.ksdshpx.spring.domain.User;
 public class TestJdbcTemplate {
 	private JdbcTemplate jdbcTemplate;
 	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+	private UserDao userDaoJdbcImpl;
 
 	@Before
 	public void init() {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-jdbc.xml");
 		jdbcTemplate = ctx.getBean("jdbcTemplate", JdbcTemplate.class);
 		namedParameterJdbcTemplate = ctx.getBean("namedParameterJdbcTemplate", NamedParameterJdbcTemplate.class);
+		userDaoJdbcImpl = ctx.getBean("userDaoJdbcImpl", UserDao.class);
 	}
 
 	@Test
@@ -89,5 +92,10 @@ public class TestJdbcTemplate {
 		SqlParameterSource paramSource = new BeanPropertySqlParameterSource(
 				new User(null, "Jerry", "j123456", 20, "male"));
 		namedParameterJdbcTemplate.update(sql, paramSource);
+	}
+
+	@Test
+	public void testUserDao() {
+		userDaoJdbcImpl.addUser(new User(null, "Seddi", "s123456", 90, "female"));
 	}
 }

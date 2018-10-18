@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import cn.ksdshpx.spring.annotation.dao.UserDao;
+import cn.ksdshpx.spring.domain.User;
 
 /**
  * @author peng.x
@@ -27,6 +28,6 @@ public class UserServiceImpl implements UserService {
 	private UserDao userDao;
 	@Override
 	public void handleAdd() {
-		userDao.addUser();
+		userDao.addUser(new User());
 	}
 }
