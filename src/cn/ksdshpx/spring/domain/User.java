@@ -11,6 +11,19 @@ public class User {
 	private Integer age;
 	private String gender;
 
+	public User() {
+
+	}
+
+	public User(Integer id, String username, String password, Integer age, String gender) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.age = age;
+		this.gender = gender;
+	}
+
 	public Integer getId() {
 		return id;
 	}

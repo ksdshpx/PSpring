@@ -1,7 +1,9 @@
 package cn.ksdshpx.spring.jdbctemplate;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -9,6 +11,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 
 import cn.ksdshpx.spring.domain.User;
 
@@ -18,11 +23,13 @@ import cn.ksdshpx.spring.domain.User;
  */
 public class TestJdbcTemplate {
 	private JdbcTemplate jdbcTemplate;
+	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
 	@Before
 	public void init() {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-jdbc.xml");
 		jdbcTemplate = ctx.getBean("jdbcTemplate", JdbcTemplate.class);
+		namedParameterJdbcTemplate = ctx.getBean("namedParameterJdbcTemplate", NamedParameterJdbcTemplate.class);
 	}
 
 	@Test
@@ -63,5 +70,24 @@ public class TestJdbcTemplate {
 		Object[] params = { 1 };
 		List<User> list = jdbcTemplate.query(sql, params, new BeanPropertyRowMapper<>(User.class));
 		System.out.println(list);
+	}
+
+	@Test
+	public void testNamedParameterJdbcTemplate() {
+		String sql = "INSERT INTO t_user(username,password,age,gender) VALUES(:username,:password,:age,:gender)";
+		Map<String, String> paramMap = new HashMap<>();
+		paramMap.put("username", "Tom");
+		paramMap.put("password", "t123456");
+		paramMap.put("age", "10");
+		paramMap.put("gender", "female");
+		namedParameterJdbcTemplate.update(sql, paramMap);
+	}
+
+	@Test
+	public void testNamedParameterJdbcTemplate2() {
+		String sql = "INSERT INTO t_user(username,password,age,gender) VALUES(:username,:password,:age,:gender)";
+		SqlParameterSource paramSource = new BeanPropertySqlParameterSource(
+				new User(null, "Jerry", "j123456", 20, "male"));
+		namedParameterJdbcTemplate.update(sql, paramSource);
 	}
 }
