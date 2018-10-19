@@ -2,6 +2,7 @@ package cn.ksdshpx.spring.tx.annotation.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import cn.ksdshpx.spring.tx.annotation.dao.BookShopDao;
 
@@ -15,6 +16,7 @@ public class BookShopServiceImpl implements BookShopService {
 	private BookShopDao bookShopDao;
 
 	@Override
+	@Transactional
 	public void buyBook(String username, String isbn) {
 		Integer price = bookShopDao.findPriceByIsbn(isbn);
 		bookShopDao.updateBookStock(isbn);
