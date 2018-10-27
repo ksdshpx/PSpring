@@ -21,7 +21,8 @@ public class CashierImpl implements Cashier {
 	private BookShopService bookShopService;
 
 	@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, noRollbackFor = {
-			UserAccountException.class })
+			UserAccountException.class },
+			readOnly=false)
 	@Override
 	public void checkout(String username, List<String> isbns) {
 		for (String isbn : isbns) {
