@@ -8,6 +8,6 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
 	<!-- 组件扫描 -->
 	<context:component-scan base-package="cn.ksdshpx.spring.aspectj.annotation"></context:component-scan>
-	<!-- 基于注解使用AspectJ:主要作用是为切面中通知能作用到的目标类进行代理-->
+	<!-- 基于注解使用AspectJ:主要作用是为切面中通知能作用到的目标类创建代理-->
 	<aop:aspectj-autoproxy/>
 </beans>
