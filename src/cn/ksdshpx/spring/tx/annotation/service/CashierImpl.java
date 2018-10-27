@@ -8,6 +8,8 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import cn.ksdshpx.spring.tx.annotation.exception.UserAccountException;
+
 /**
  * @author peng.x
  * @date 2018年10月27日 上午9:57:04
@@ -18,7 +20,8 @@ public class CashierImpl implements Cashier {
 	@Autowired
 	private BookShopService bookShopService;
 
-	@Transactional(propagation=Propagation.REQUIRED,isolation=Isolation.READ_COMMITTED)
+	@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, noRollbackFor = {
+			UserAccountException.class })
 	@Override
 	public void checkout(String username, List<String> isbns) {
 		for (String isbn : isbns) {
